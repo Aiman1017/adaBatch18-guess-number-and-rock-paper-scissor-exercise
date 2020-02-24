@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock, Paper and Scissors Exercise</title>
+</head>
+<body>
+	<h1>Rock, Paper and Scissors</h1>
+	<button onclick="selectWeapon(0)">Rock</button>
+	<button onclick="selectWeapon(1)">Paper</button>
+	<button onclick="selectWeapon(2)">Scissor</button>
+
+	<h3>User Score: <span id="user">0</span></h3>
+	<h3>Computer Score: <span id="computer">0</span></h3>
+
+	<p id="rps_message"></p>
+
+<script type="text/javascript">
+
+	var weapons = ["rock" , "paper" , "scissors"];
+	var computerScore = 0
+	var userScore = 0
+	function selectWeapon(weapon){
+		var computerWeapon = Math.floor(Math.random()*3);
+		if(weapon == 0){
+			if(computerWeapon == 0){
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon]+ "." + " It's a draw"
+			}
+			else if(computerWeapon == 1){
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " You lose"
+				computerScore++;
+			}
+			else{
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " You win"
+				userScore++;
+			}
+		}
+
+		 else if(weapon == 1){
+			if(computerWeapon == 0){
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " You won"
+				userScore++;
+			}
+			else if(computerWeapon == 1){
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " It's a draw"
+			}
+			else{
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " You lose"
+				computerScore++;
+			}
+		}
+
+		else if(weapon == 2){
+			if(computerWeapon == 0){
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " You lose"
+				computerScore++;
+			}
+			else if(computerWeapon == 1){
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " You won"
+				userScore++;
+			}
+			else{
+				document.getElementById("rps_message").innerHTML= "Computer selects " + weapons[computerWeapon] +  "." + " It's a draw"
+			}
+		}
+		document.getElementById("user").innerHTML = userScore;
+		document.getElementById("computer").innerHTML = computerScore;
+	}
+
+</script>
+</body>
+</html>
