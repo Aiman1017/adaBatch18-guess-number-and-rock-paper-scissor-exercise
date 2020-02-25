@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Guess The Number Exercise</h1>
+	<h3>Enter the number</h3>
+	<input type="name" name="guessNumber" placeholder="Enter a number here" id="userGuess">
+	<button onclick="sentAnswer()">Send Number</button>
+	<button onclick="resetButton()">Reset</button>
+
+	<p><span id="giveAnswer"></span></p>
+
+	<h3>Win:<span id='win'>0</span></h3>
+	<h3>Lose:<span id='lose'>0</span></h3>
+
+
+	<script type="text/javascript">
+
+		var randomNumber = Math.ceil(Math.random()*100);
+		var numberOfGuess = 5
+		var winScore = 0
+		var loseScore = 0
+
+		function sentAnswer(){
+				var userNumber = document.getElementById("userGuess").value;
+				if(userNumber == randomNumber){
+					document.getElementById('giveAnswer').innerHTML = "Congratulation, you guess it right."+ winScore++;
+				}
+				else if(userNumber > randomNumber){
+					document.getElementById('giveAnswer').innerHTML = "You guess too high!" +userNumber+ ". " + numberOfGuess-- + ' guess remaining';
+				}
+				else{
+					document.getElementById('giveAnswer').innerHTML = 'You guess too low!' +userNumber+ '. ' + numberOfGuess-- + ' guess remaining';
+				}
+				if(numberOfGuess < 0){
+					document.getElementById('giveAnswer').innerHTML = 'You lose.' + 'The number is ' + randomNumber +'.'+ loseScore++;
+				}
+				document.getElementById('win').innerHTML = winScore;
+				document.getElementById('lose').innerHTML = loseScore;
+			}
+
+		function resetButton(){
+			randomNumber = Math.ceil(Math.random()*100);
+			numberOfGuess = 5
+			document.getElementById('giveAnswer').innerHTML = ''
+			document.getElementById('userGuess').value = ''
+		}
+
+	</script>
+</body>
+</html>
